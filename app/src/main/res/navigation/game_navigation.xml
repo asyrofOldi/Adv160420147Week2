@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/game_navigation"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/itemHome">
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/itemHome"
         android:name="com.ubaya.adv160420147week2.MainFragment"
         android:label="Main Screen"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/actionGameFragment"
             app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/actionOptionFragment"
+            app:destination="@id/optionFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -21,13 +24,19 @@
         tools:layout="@layout/fragment_game">
         <action
             android:id="@+id/actionMainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/itemHome" />
         <argument
             android:name="player_name"
             app:argType="string" />
         <action
             android:id="@+id/actionGameFragmentToResultFragment"
             app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/actionGameFragmentTotestFragment"
+            app:destination="@id/testFragment" />
+        <action
+            android:id="@+id/action_gameFragment_self"
+            app:destination="@id/gameFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
@@ -36,9 +45,33 @@
         tools:layout="@layout/fragment_result">
         <action
             android:id="@+id/actionResultFragmentToMainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/itemHome" />
         <argument
             android:name="playerScore"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.ubaya.adv160420147week2.TestFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test" >
+        <action
+            android:id="@+id/action_testFragment_to_mainFragment"
+            app:popUpTo="@id/itemHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemHistory"
+        android:name="com.ubaya.adv160420147week2.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="com.ubaya.adv160420147week2.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <dialog
+        android:id="@+id/optionFragment"
+        android:name="com.ubaya.adv160420147week2.OptionFragment"
+        android:label="fragment_option"
+        tools:layout="@layout/fragment_option" />
 </navigation>
