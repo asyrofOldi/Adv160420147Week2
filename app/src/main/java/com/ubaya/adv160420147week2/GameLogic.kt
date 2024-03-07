@@ -16,7 +16,7 @@ class GameLogic {
 
     fun checkAnswer(userAnswer: Int): Boolean {
         if (userAnswer == correctAnswer) {
-            score = 100
+            score ++
             return true
         }
         return false
