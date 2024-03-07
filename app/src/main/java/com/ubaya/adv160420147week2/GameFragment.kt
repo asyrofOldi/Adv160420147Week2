@@ -42,9 +42,11 @@ class GameFragment : Fragment() {
             if (userAnswer != null) {
                 val isCorrect = gameLogic.checkAnswer(userAnswer)
                 if (isCorrect) {
-                    val newScore = gameLogic.getScore()
-                    val action = GameFragmentDirections.actionGameFragmentToResultFragment(playerScore = newScore)
+                    gameLogic.generateRandomNumbers() // Generate a new question
+                    val playerName = GameFragmentArgs.fromBundle(requireArguments()).playerName
+                    val action = GameFragmentDirections.actionGameFragmentSelf(playerName)
                     Navigation.findNavController(it).navigate(action)
+                    displayQuestion() // Display the new question
                 } else {
                     val action = GameFragmentDirections.actionGameFragmentToResultFragment(playerScore = 0)
                     Navigation.findNavController(it).navigate(action)
